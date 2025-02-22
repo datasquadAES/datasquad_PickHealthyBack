@@ -4,6 +4,9 @@ const express = require('express');
 const app = express();
 const { swaggerUi, specs } = require('./config/swagger');
 const morgan = require('morgan'); // Importa morgan
+const cors = require('cors'); // Importa el paquete cors
+
+app.use(cors({ origin: true }));
 
 // Otras configuraciones y middlewares
 app.use(express.json());
