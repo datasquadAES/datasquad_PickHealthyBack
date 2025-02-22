@@ -6,7 +6,9 @@
   "scripts": {
     "start": "node src/app.js",
     "dev": "nodemon src/app.js",
-    "build": "npm install"
+    "build": "npm install",
+    "test": "mocha",
+    "test:coverage": "nyc --check-coverage --lines 50 --functions 50 --branches 40 --statements 50 mocha"
   },
   "dependencies": {
     "cors": "^2.8.5",
@@ -23,7 +25,12 @@
     "sworm": "^3.8.1"
   },
   "devDependencies": {
-    "nodemon": "^2.0.22"
+    "chai": "^5.2.0",
+    "mocha": "^11.1.0",
+    "nodemon": "^2.0.22",
+    "nyc": "^17.1.0",
+    "sinon": "^19.0.2",
+    "supertest": "^7.0.0"
   },
   "keywords": [],
   "author": "",
