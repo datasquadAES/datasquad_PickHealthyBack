@@ -19,6 +19,9 @@ const router_usuario = require('./routes/usuario_routes');
 const router_tipo_usuario = require('./routes/tipo_usuario_routes');
 const router_tipo_documento = require('./routes/tipo_documento_routes');
 const router_direccion_usuario = require('./routes/direccion_usuario_routes');
+const router_menu = require('./routes/menu_routes');
+const router_pago = require('./routes/pago_routes');
+
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 app.use('/api', router_ciudad);
@@ -27,5 +30,7 @@ app.use('/api', router_usuario);
 app.use('/api', router_tipo_usuario);
 app.use('/api', router_direccion_usuario);
 app.use('/api', router_tipo_documento);
+app.use('/api', router_menu);
+app.use('/api', router_pago);
 
 module.exports = app;
