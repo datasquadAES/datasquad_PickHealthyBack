@@ -13,7 +13,9 @@ exports.create = async (req, res) => {
     id_tipo_usuario,
     correo_electronico,
     password,
-    estado_usuario
+    estado_usuario,
+    direccion,
+    telefono
   } = req.body;
   try {
     const usuario = await Usuario.create({
@@ -27,7 +29,9 @@ exports.create = async (req, res) => {
       id_tipo_usuario,
       correo_electronico,
       password,
-      estado_usuario
+      estado_usuario,
+      direccion,
+      telefono
     });
     res.status(201).json(usuario);
   } catch (error) {
@@ -59,6 +63,25 @@ exports.findOne = async (req, res) => {
   }
 };
 
+// Obtener un usuario por username y password
+exports.findByCredentials = async (req, res) => {
+  try {
+    const usuario = await Usuario.findOne({
+      where: {
+        username: req.body.username,
+        password: req.body.password
+      }
+    });
+    if (usuario) {
+      res.status(200).json(usuario);
+    } else {
+      res.status(404).json({ error: 'Usuario no encontrado' });
+    }
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
 // Actualizar un usuario por ID
 exports.update = async (req, res) => {
   const {
@@ -72,7 +95,9 @@ exports.update = async (req, res) => {
     id_tipo_usuario,
     correo_electronico,
     password,
-    estado_usuario
+    estado_usuario,
+    direccion,
+    telefono
   } = req.body;
   try {
     const [updated] = await Usuario.update({
@@ -86,7 +111,9 @@ exports.update = async (req, res) => {
       id_tipo_usuario,
       correo_electronico,
       password,
-      estado_usuario
+      estado_usuario,
+      direccion,
+      telefono
     }, {
       where: { id: req.params.id }
     });

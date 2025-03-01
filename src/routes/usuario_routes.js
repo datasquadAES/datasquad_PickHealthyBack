@@ -91,6 +91,33 @@ router_usuario.get('/usuarios/:id', usuarioController.findOne);
 
 /**
  * @swagger
+ * /api/usuarios/login:
+ *   post:
+ *     summary: Iniciar sesión de usuario
+ *     tags: [Usuario]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               correo_electronico:
+ *                 type: string
+ *               password:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Usuario autenticado exitosamente
+ *       401:
+ *         description: Credenciales inválidas
+ *       400:
+ *         description: Error al iniciar sesión
+ */
+router_usuario.post('/usuarios/login', usuarioController.findByCredentials);
+
+/**
+ * @swagger
  * /api/usuarios/{id}:
  *   put:
  *     summary: Actualizar un usuario por ID

@@ -69,6 +69,15 @@ const Usuario = sequelize.define('Usuario', {
     validate: {
       isIn: [['activo', 'inactivo']]
     }
+  },
+  
+  direccion: {
+    type: DataTypes.STRING(500),
+    allowNull: true
+  },
+  telefono: {
+    type: DataTypes.STRING(15),
+    allowNull: true
   }
 }, {
   tableName: 'usuario',
