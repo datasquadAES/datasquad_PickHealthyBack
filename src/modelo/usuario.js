@@ -67,8 +67,12 @@ const Usuario = sequelize.define('Usuario', {
     type: DataTypes.STRING(20),
     allowNull: false,
     validate: {
-      isIn: [['activo', 'inactivo']]
+      isIn: [['activo', 'inactivo', 'bloqueado']]
     }
+  },
+  failed_attemps: { 
+    type: DataTypes.INTEGER, 
+    defaultValue: 0 
   },
   
   direccion: {
