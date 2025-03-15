@@ -43,7 +43,10 @@ exports.find = async (req, res) => {
   const { usuario_id } = req.query; 
 
   try {
-    const pedidos = await Pedido.findAll({where: {usuario_id}});
+    const pedidos = await Pedido.findAll({
+      where: {usuario_id},
+      order: [['fecha_pedido', 'DESC']] 
+    });
     res.status(200).json(pedidos);
     
   } catch (error) {
