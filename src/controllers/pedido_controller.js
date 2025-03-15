@@ -38,11 +38,26 @@ exports.findOne = async (req, res) => {
   }
 };
 
+exports.find = async (req, res) => {
+
+  const { usuario_id } = req.query; 
+
+  try {
+    const pedidos = await Pedido.findAll({where: {usuario_id}});
+    res.status(200).json(pedidos);
+    
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+    
+  }
+
+}
+
 // Actualizar un pedido por ID
 exports.update = async (req, res) => {
   const { usuario_id, fecha_pedido, estado } = req.body;
   try {
-    const [updated] = await Pedido.update({
+    const updated = await Pedido.update({
       usuario_id,
       fecha_pedido,
       estado
@@ -50,6 +65,7 @@ exports.update = async (req, res) => {
       where: { id: req.params.id }
     });
     if (updated) {
+      console.log('Pedido actualizado: ' + updated)
       const updatedPedido = await Pedido.findByPk(req.params.id);
       res.status(200).json(updatedPedido);
     } else {

@@ -33,4 +33,8 @@ const Pedido = sequelize.define('Pedido', {
 
 Pedido.belongsTo(Usuario, { foreignKey: 'usuario_id' });
 
+Pedido.associate = (models) => {
+  Pedido.hasMany(models.PedidoDetalle, { foreignKey: "pedidoId", as: "detalles" });
+};
+
 module.exports = Pedido;

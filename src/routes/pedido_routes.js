@@ -49,6 +49,20 @@ router_pedido.get('/pedidos', pedidoController.findAll);
 
 /**
  * @swagger
+ * /api/pedidos:
+ *   post:
+ *     summary: Obtener todos los pedidos segun parametros del body
+ *     tags: [Pedido]
+ *     responses:
+ *       200:
+ *         description: Lista de pedidos
+ *       400:
+ *         description: Error al obtener los pedidos
+ */
+router_pedido.get('/pedido', pedidoController.find);
+
+/**
+ * @swagger
  * /api/pedidos/{id}:
  *   get:
  *     summary: Obtener un pedido por ID
