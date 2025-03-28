@@ -58,12 +58,13 @@ exports.find = async (req, res) => {
 
 // Actualizar un pedido por ID
 exports.update = async (req, res) => {
-  const { usuario_id, fecha_pedido, estado } = req.body;
+  const { usuario_id, fecha_pedido, estado, dealer_id } = req.body;
   try {
     const updated = await Pedido.update({
       usuario_id,
       fecha_pedido,
-      estado
+      estado,
+      dealer_id
     }, {
       where: { id: req.params.id }
     });

@@ -25,6 +25,18 @@ const Pedido = sequelize.define('Pedido', {
     type: DataTypes.STRING(50),
     allowNull: false,
     defaultValue: 'pendiente'
+  },
+  dealer_id: {
+    type: DataTypes.STRING(500),
+    allowNull: true,
+  },
+  restaurant_address: {
+    type: DataTypes.STRING(500),
+    allowNull: true,
+  },
+  destination_address: {
+    type: DataTypes.STRING(500),
+    allowNull: true,
   }
 }, {
   tableName: 'pedidos',
